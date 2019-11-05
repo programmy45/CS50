@@ -1,0 +1,81 @@
+//Getting an error message when testing if condition (argc!=2). Basically the test works fine if I put more than 2 arguments, ie I get the error
+code from my code, but if I test this code with 0 argument I get the following. Fairly new to programming so any help understanding what 
+this means would be awesome (issue with memory?). thanks
+
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1377==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000042241b bp 0x7ffe67f536a0 sp 0x7ffe67f534f0 T1377)
+==1377==The signal is caused by a READ memory access.
+==1377==Hint: address points to the zero page.
+    #0 0x42241a  (/root/sandbox/crack+0x42241a)
+    #1 0x7f9f06315b96  (/lib/x86_64-linux-gnu/libc.so.6+0x21b96)
+    #2 0x402b29  (/root/sandbox/crack+0x402b29)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+==1377==ABORTING
+
+
+
+
+
+
+#include <cs50.h>
+#include <stdio.h>
+#include <crypt.h>
+#include<string.h>
+#include<ctype.h>
+
+int main(int argc, string argv[])
+{
+// arrays to store pswd
+    char password[5];
+    // array to store salt
+    char salt[2];
+    
+    salt[0] = argv[1][0];
+    salt[1] = argv[1][1];
+    int result = 1;
+
+    if (argc !=2)
+    {
+        printf("./crack Unrecognized Hash\n");
+        return 1;
+    }
+    else
+    {
+    
+    
+// nested loop to check all letters combination for each letter
+ 
+     
+    for (char i = '\0' ; i < '{' ; i++)
+  
+        for (char j = '\0'; j < '{' ; j++)
+         
+            for (char k = '\0'; k < '{' ; k++)
+               
+                for (char l = '\0'; l < '{'; l++)
+               
+                        
+                    for (char m = 'a'; m < '{'; m++)
+                    {
+                        password[0] = m;
+                        password[1] = l;
+                        password[2] = k;
+                        password[3] = j;
+                        password[4] = i;
+// compare provided password with hash
+                        result = strcmp(crypt(password, salt), argv[1]);
+// return password if hash matches
+                        if (result == 0)
+                        {
+                            printf("%s\n", password);
+                            return 0;
+                        }}}
+                        
+                        printf("%s\n", "Wrong Hash-No password could be retrieved");
+                         
+                        return 2;}
+       
+                                       
+         
+                    
